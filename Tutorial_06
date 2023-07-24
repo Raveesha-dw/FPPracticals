@@ -1,0 +1,51 @@
+import scala.io.StdIn.readInt
+
+object test {
+  def encryption(str: String, num: Int): Unit = {
+    var array = str.toCharArray();
+    for (letter <- array){
+      print((letter+num).toChar);
+    }
+  }
+
+  def decryption(str: String, num: Int): Unit = {
+    var array = str.toCharArray();
+    for (letter <- array) {
+      print((letter- num).toChar);
+    }
+  }
+
+  def cipherFunc(str: String, num: Int, mode: String): Unit = {
+    mode.toLowerCase() match {
+      case "encrypt" => encryption(str, num);
+      case "decrypt" => decryption(str, num);
+      case _ => println("Invalid mode. Select 'encrypt/decrypt' ");
+    }
+  }
+
+  def main(args: Array[String]): Unit = {
+    println("Enter plaintext: ");
+    var text = scala. io. StdIn. readLine()
+
+    print("Enter Number: ");
+    var shift = readInt();
+
+    encryption(text,shift);
+
+    println("\nEnter encrypted text: ");
+    var enc = scala.io.StdIn.readLine()
+
+    print("Enter Number: ");
+    var dec = readInt();
+
+    decryption(enc,dec);
+
+    println("\n\nEnter text: ");
+    var str = scala.io.StdIn.readLine()
+    print("Enter Number: ");
+    var sh = readInt();
+    println("Enter encrypt or decrypt? ");
+    var mode = scala.io.StdIn.readLine();
+    cipherFunc(str,sh,mode);
+  }
+}
